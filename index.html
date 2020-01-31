@@ -11,7 +11,7 @@
     <button id="authorize_button" style="display: none;">登入</button>
     <button id="signout_button" style="display: none;">登出</button>
 	<input type="text" id="search" style="display: none;">
-	<button id="signout_button" style="display: none;" onclick="listMajors()">查詢資料</button>
+	<button id="search_button" style="display: none;" onclick="listMajors()">查詢資料</button>
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
@@ -29,6 +29,7 @@
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
 	  var search_text = document.getElementById('search');
+	  var search_button = document.getElementById('search_button');
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -68,11 +69,13 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           search_text.style.display = 'block';
+          search_button.style.display = 'block';
           //listMajors();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
           search_text.style.display = 'none';
+          search_button.style.display = 'none';
         }
       }
 
