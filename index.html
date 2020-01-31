@@ -95,7 +95,7 @@
        */
       function appendPre(message) {
         var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
+        var textContent = document.createTextNode(message + '');
         pre.appendChild(textContent);
       }
 
@@ -107,6 +107,7 @@
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
           range: 'Quest!A:F',
+          majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -114,7 +115,8 @@
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[4]);
+              for (j = 0; j < row.length; i++)appendPre(row[j] + ' ');
+              	appendPre('\n');
             }
           } else {
             appendPre('資料庫內沒有任何資料');
