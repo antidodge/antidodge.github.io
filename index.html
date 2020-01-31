@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <p>Google Sheets API Quickstart</p>
+    <p></p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">登入</button>
     <button id="signout_button" style="display: none;">登出</button>
-
+	<input type="text" id="search" style="display: none;">
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
@@ -27,7 +27,7 @@
 
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
-
+	  var search_text = document.getElementById('search');
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -66,10 +66,12 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          listMajors();
+          search_text.style.display = 'block';
+          //listMajors();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
+          search_text.style.display = 'none';
         }
       }
 
@@ -106,7 +108,7 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
-          range: 'Quest!A2:F100',
+          range: 'Quest!A:F',
           majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
@@ -116,7 +118,11 @@
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              for (j = 0; j < row.length; j++)appendPre(row[j] + ' ');
+              for (j = 0; j < row.length; j++)
+              		if(row[j].indexOf(search_text.value)!=-1){
+              			for (k = 0; k < row.length; k++)appendPre(row[k] + ' ');
+              		break;
+              		}
               	appendPre('\n');
             }
           } else {
@@ -128,7 +134,6 @@
       }
 
     </script>
-
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
