@@ -8,8 +8,8 @@
     <p>Google Sheets API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
+    <button id="authorize_button" style="display: none;">登入</button>
+    <button id="signout_button" style="display: none;">登出</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
@@ -115,7 +115,7 @@
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              for (j = 0; j < row.length; i++)appendPre(row[j] + ' ');
+              for (j = 0; j < row.length; j++)appendPre(row[j] + ' ');
               	appendPre('\n');
             }
           } else {
