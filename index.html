@@ -124,10 +124,12 @@
               // Print columns A and E, which correspond to indices 0 and 4.
               for (j = 0; j < row.length; j++)
               		if(row[j].indexOf(search_text.value)!=-1){
-              			for (k = 0; k < row.length; k++)appendPre(row[k] + ' ');
+              			for (k = 0; k < row.length; k++){
+              				appendPre(row[k] + ' ');
+              				appendPre('\n');
+              			}
               		break;
               		}
-              	appendPre('\n');
             }
           } else {
             appendPre('資料庫內沒有任何資料');
