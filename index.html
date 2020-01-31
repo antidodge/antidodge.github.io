@@ -106,7 +106,7 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
-          range: 'Quest!A:F',
+          range: 'Quest!A:F100',
           majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
