@@ -106,12 +106,13 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
-          range: 'Quest!A:F100',
+          range: 'Quest!A2:F100',
           majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
             appendPre('任務名稱, 地區,任務條件,任務流程,獲得物品,備註:');
+            appendPre('\n');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
