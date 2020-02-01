@@ -13,12 +13,13 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
       <div class="panel panel-info">
-    <div class="panel-body">上方面板</div>
+    <div class="panel-body">
+    	<button id="authorize_button" style="display: none;" class="btn">登入</button>
+    <button id="signout_button" style="display: none;" class="btn">登出</button>
+	<input type="text" id="search" style="display: none;" class="form-control">
+	<button id="search_button" style="display: none;" onclick="listMajors()" class="btn">查詢資料</button>
+</div>
   </div>
-    <button id="authorize_button" style="display: none;">登入</button>
-    <button id="signout_button" style="display: none;">登出</button>
-	<input type="text" id="search" style="display: none;">
-	<button id="search_button" style="display: none;" onclick="listMajors()">查詢資料</button>
     <div id="content" style="white-space: pre-wrap;" class="panel-group"></div>
 
     <script type="text/javascript">
