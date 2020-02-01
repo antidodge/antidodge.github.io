@@ -17,7 +17,7 @@
     <button id="signout_button" style="display: none;">登出</button>
 	<input type="text" id="search" style="display: none;">
 	<button id="search_button" style="display: none;" onclick="listMajors()">查詢資料</button>
-    <div id="content" class="panel-group"></div>
+    <div id="content" style="white-space: pre-wrap;" class="panel-group"></div>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -121,18 +121,20 @@
           majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
+          var pre = document.getElementById('content');
           if (range.values.length > 0) {
           	//
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               for (j = 0; j < row.length; j++)
               		if(row[j].indexOf(search_text.value)!=-1){
-              			appendPre('<div class=\'panel panel-info\'>');
+              			var ddiv = document.createElement("div");
+              			ddiv.ClassName = 'panel panel-info';
               			for (k = 0; k < row.length; k++){
-              				appendPre(row[k] + ' ');
-              				appendPre('\n');
+              				ddiv.innerHTML += row[k] + ' ';
+              				ddiv.innerHTML += '\n';
               			}
-              		appendPre('</div>');
+              			pre.appendChild(div);
               		break;
               		}
             }
