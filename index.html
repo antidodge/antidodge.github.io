@@ -106,8 +106,7 @@
        */
       function appendPre(message) {
         var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '');
-        pre.appendChild(textContent);
+        pre.innerHTML(message);
       }
 
       /**
