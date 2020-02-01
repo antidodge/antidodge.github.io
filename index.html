@@ -136,7 +136,7 @@
               for (j = 0; j < row.length; j++)
               		if(row[j].indexOf(search_text.value)!=-1){
               			var ddiv = document.createElement("div");
-              			ddiv.ClassName = 'panel panel-info';
+              			ddiv.setAttribute("class", "panel panel-info");
               			for (k = 0; k < row.length; k++){
               				ddiv.innerHTML += row[k] + ' ';
               				ddiv.innerHTML += '\n';
