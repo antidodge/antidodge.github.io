@@ -17,7 +17,7 @@
     <button id="signout_button" style="display: none;">登出</button>
 	<input type="text" id="search" style="display: none;">
 	<button id="search_button" style="display: none;" onclick="listMajors()">查詢資料</button>
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <div id="content" style="white-space: pre-wrap;" class="panel-group"></div>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -123,8 +123,7 @@
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('<div class="panel-group">');
-            appendPre('\n');
+          	//
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               for (j = 0; j < row.length; j++)
@@ -137,7 +136,6 @@
               		appendPre('</div>');
               		break;
               		}
-             appendPre('</div>');
             }
           } else {
             appendPre('資料庫內沒有任何資料');
