@@ -16,8 +16,12 @@
     <div class="panel-body">
     	<button id="authorize_button" style="display: none;" class="btn">登入</button>
     <button id="signout_button" style="display: none;" class="btn">登出</button>
-	<input type="text" id="search" style="display: none;" class="form-control">
-	<button id="search_button" style="display: none;" onclick="listMajors()" class="btn">查詢資料</button>
+	<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="欲查詢的資料" aria-label="欲查詢的資料" aria-describedby="basic-addon2" id="search" style="display: none;">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" onclick="listMajors()">查詢資料</button>
+  </div>
+</div>
 </div>
   </div>
     <div id="content" style="white-space: pre-wrap;" class="panel-group"></div>
