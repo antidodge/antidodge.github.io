@@ -106,7 +106,7 @@
        */
       function appendPre(message) {
         var pre = document.getElementById('content');
-        pre.innerHTML(message);
+        pre.append(message);
       }
 
       /**
@@ -127,7 +127,7 @@
               var row = range.values[i];
               for (j = 0; j < row.length; j++)
               		if(row[j].indexOf(search_text.value)!=-1){
-              			appendPre('<div class="panel panel-info">');
+              			appendPre('<div class=\'panel panel-info\'>');
               			for (k = 0; k < row.length; k++){
               				appendPre(row[k] + ' ');
               				appendPre('\n');
