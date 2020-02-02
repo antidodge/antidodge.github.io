@@ -22,10 +22,10 @@
       <div class="modal-body">
         本資料庫僅為備份用，若有疑問請聯繫csielover@gmail.com
         <br>
-        或Discord:Antidodge#2381
+        Discord:Antidodge#2381
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">我知道了</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">我知道了</button>
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@
 	<div class="col-6 col-lg-6">
 		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   		<div class="btn-group mr-2" role="group" aria-label="First group">
-    		<button type="button" class="btn btn-outline-dark">任務</button>
-    		<button type="button" class="btn btn-outline-dark">武將</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(0)">任務</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(1)">武將</button>
     		<button type="button" class="btn btn-outline-dark">裝備</button>
     		<button type="button" class="btn btn-outline-dark">材料</button>
     		<button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#aboutsite">關於</button>
@@ -64,11 +64,11 @@
     <div id="content" style="white-space: pre-wrap;" class="panel-group"></div>
 
     <script type="text/javascript">
-      // Client ID and API key from the Developer Console
+      // 客戶端ID與API密鑰
       var CLIENT_ID = '934490329338-7i255c61iojfqn31bpls9iu7ihnthari.apps.googleusercontent.com';
       var API_KEY = '';
-
-      // Array of API discovery doc URLs for APIs used by the quickstart
+      var search_op = 0;//預設 0=任務 1 =NPC 以此類推
+      // API文件位置(預設)
       var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 
       // Authorization scopes required by the API; multiple scopes can be
@@ -129,39 +129,34 @@
       }
 
       /**
-       *  Sign in the user upon button click.
+       *  顯示用戶登入按鈕
        */
       function handleAuthClick(event) {
         gapi.auth2.getAuthInstance().signIn();
       }
 
       /**
-       *  Sign out the user upon button click.
+       *  顯示用戶登出按鈕
        */
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
       }
 
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node. Used to display the results of the API call.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
       function appendPre(message) {
         var pre = document.getElementById('content');
         pre.append(message);
       }
-
-      /**
-       * Print the names and majors of students in a sample spreadsheet:
-       * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-       */
+	function setSearchType(type){
+	search_op = type;
+	}
       function listMajors() {
+      	var QuestFieldName = ["任務名稱", "地區", "任務條件","任務流程","獲得物品","備註"];
+      	var NPCFieldName = ["等級", "名稱", "網羅","屬性","知力","武力","防禦","體質","能量","敏捷","特技","出沒地","掉落物"];
+      	var RangeSet = ["Quest!A:F","NPC!A:F"]
       	content.innerHTML = "";
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
-          range: 'Quest!A:F',
+          range: RangeSet[search_op],
           majorDimension: 'ROWS',
         }).then(function(response) {
           var range = response.result;
@@ -181,12 +176,8 @@
               			var trr = document.createElement("tr");
               			var td1 = document.createElement("td");
               			var td2 = document.createElement("td");
-              				if(k==0)td1.innerHTML +=  '任務名稱';
-              				if(k==1)td1.innerHTML +=  '地區';
-              				if(k==2)td1.innerHTML +=  '任務條件';
-              				if(k==3)td1.innerHTML +=  '任務流程';
-              				if(k==4)td1.innerHTML +=  '獲得物品';
-              				if(k==5)td1.innerHTML +=  '備註';
+              				if(search_op==0)td1.innerHTML =  QuestFieldName[k];
+              				if(search_op==1)td1.innerHTML =  NPCFieldName[k];
               				td2.innerHTML = row[k];
               			trr.appendChild(td1);
               			trr.appendChild(td2);
