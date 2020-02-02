@@ -150,11 +150,27 @@
               for (j = 0; j < row.length; j++)
               		if(row[j].indexOf(search_text.value)!=-1){
               			var ddiv = document.createElement("div");
-              			ddiv.setAttribute("class", "panel panel-info");
+              			ddiv.setAttribute("class", "row");
+              			var tb = document.createElement("table");
+              			tb.setAttribute("class", "table table-dark");
+              			var ttbody = document.createElement("tbody");
+              			var trr = document.createElement("tr");
               			for (k = 0; k < row.length; k++){
-              				ddiv.innerHTML += row[k] + ' ';
-              				ddiv.innerHTML += '\n';
+              			var td1 = document.createElement("td");
+              			var td2 = document.createElement("td");
+              				if(k==0)td.innerHTML +=  '任務名稱';
+              				if(k==1)td.innerHTML +=  '地區';
+              				if(k==2)td.innerHTML +=  '任務條件';
+              				if(k==3)td.innerHTML +=  '任務流程';
+              				if(k==4)td.innerHTML +=  '獲得物品';
+              				if(k==5)td.innerHTML +=  '備註';
+              				td2.innerHTML = row[k];
+              			td1.appendChild(trr);
+              			td2.appendChild(trr);
               			}
+              			trr.appendChild(ttbody);
+              			ttbody.appendChild(tb);
+              			tb.appendChild(ddiv);
               			pre.appendChild(ddiv);
               		break;
               		}
