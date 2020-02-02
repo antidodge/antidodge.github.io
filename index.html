@@ -165,11 +165,11 @@
               				if(k==4)td1.innerHTML +=  '獲得物品';
               				if(k==5)td1.innerHTML +=  '備註';
               				td2.innerHTML = row[k];
-              			td1.appendChild(trr);
-              			td2.appendChild(trr);
+              			trr.appendChild(trr);
+              			trr.appendChild(trr);
               			}
-              			trr.appendChild(ttbody);
-              			ttbody.appendChild(tb);
+              			ttbody.appendChild(trr);
+              			tb.appendChild(ttbody);
               			ddiv.appendChild(tb);
               			pre.appendChild(ddiv);
               		break;
