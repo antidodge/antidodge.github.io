@@ -154,8 +154,8 @@
               			var tb = document.createElement("table");
               			tb.setAttribute("class", "table table-dark");
               			var ttbody = document.createElement("tbody");
-              			var trr = document.createElement("tr");
               			for (k = 0; k < row.length; k++){
+              			var trr = document.createElement("tr");
               			var td1 = document.createElement("td");
               			var td2 = document.createElement("td");
               				if(k==0)td1.innerHTML +=  '任務名稱';
@@ -167,8 +167,8 @@
               				td2.innerHTML = row[k];
               			trr.appendChild(td1);
               			trr.appendChild(td2);
-              			}
               			ttbody.appendChild(trr);
+              			}
               			tb.appendChild(ttbody);
               			ddiv.appendChild(tb);
               			pre.appendChild(ddiv);
