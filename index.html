@@ -9,6 +9,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
+  <!-- Modal -->
+<div class="modal fade" id="aboutsite" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">吞食天地備份用資料庫</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        本資料庫僅為備份用，若有疑問請聯繫csielover@gmail.com
+        <br>
+        或Discord:Antidodge#2381
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">我知道了</button>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="container-fluid">
     <p></p>
 
@@ -21,6 +42,7 @@
     		<button type="button" class="btn btn-outline-dark">武將</button>
     		<button type="button" class="btn btn-outline-dark">裝備</button>
     		<button type="button" class="btn btn-outline-dark">材料</button>
+    		<button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#aboutsite">關於</button>
   		</div>
   		</div>
   	</div>
