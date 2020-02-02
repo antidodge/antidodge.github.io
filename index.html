@@ -119,12 +119,12 @@
           signoutButton.style.display = 'block';
           search_text.style.display = 'block';
           search_button.style.display = 'block';
-          //listMajors();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
           search_text.style.display = 'none';
           search_button.style.display = 'none';
+          content.innerHTML = "";
         }
       }
 
@@ -147,6 +147,7 @@
         pre.append(message);
       }
 	function setSearchType(type){
+	content.innerHTML = "";
 	search_op = type;
 	}
       function listMajors() {
