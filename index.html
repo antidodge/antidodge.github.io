@@ -50,7 +50,7 @@
     		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(3)" id="search_btn#3">材料</button>
     		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(4)" id="search_btn#4">礦怪</button>
     		<button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#aboutsite">關於</button>
-    		<button type="button" class="btn btn-outline-dark" >日誌</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(5)" id="search_btn#5">日誌</button>
     		<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://shota.ddns.net/'">吞伊</button>
   		</div>
   		</div>
@@ -152,10 +152,8 @@
 	function setSearchType(type){
 	content.innerHTML = "";
 	search_op = type;
-	document.getElementById('search_btn#0').setAttribute("class", "btn btn-outline-dark");
-	document.getElementById('search_btn#1').setAttribute("class", "btn btn-outline-dark");
-	document.getElementById('search_btn#2').setAttribute("class", "btn btn-outline-dark");
-	document.getElementById('search_btn#3').setAttribute("class", "btn btn-outline-dark");
+	for(i=0; i<6;i++)document.getElementById('search_btn#'+i).setAttribute("class", "btn btn-outline-dark");
+	if(type==5)listMajors();
 	var btn = document.getElementById('search_btn#'+search_op);
 	btn.setAttribute("class", "btn btn-secondary active");
 	}
@@ -166,7 +164,8 @@
       	var EquipFieldName = ["裝備部位", "名稱", "等級","類別","能力","取得位置","購買價","點數"];
       	var MaterialFieldName = ["種類", "物品等級", "物品名稱","地區-地點","NPC屬性","NPC等級","NPC名稱"];
       	var OreFieldName = ["等級", "屬性", "名稱","地區-礦區名稱","掉落物品"];
-      	var RangeSet = ["Quest!A:F","NPC!A:M","Equip!A:H","Material!A:G","Ore!A:E"];
+      	var NoteFieldName = ["日期","標題","內容"];
+      	var RangeSet = ["Quest!A:F","NPC!A:M","Equip!A:H","Material!A:G","Ore!A:E","Note:A:C"];
       	content.innerHTML = "";
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
