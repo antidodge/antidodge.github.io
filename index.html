@@ -22,11 +22,15 @@
       <div class="modal-body">
         本資料庫備份用，以免掛站，資料來源為吞食伊拉克
         <br>
-        網站框架為Bootstrap 4
+        網站框架:Bootstrap 4
         <br>
-        所有資料皆儲存於Google Sheets，並使用Google Sheets API v4進行導入
+        所有資料皆儲存於Google Sheets
         <br>
-        若有疑問、或需要資料表內容，請聯繫csielover@gmail.com
+        使用Google Sheets API v4進行導入
+        <br>
+        若有疑問、需要資料表內容
+        <br>
+        Email:csielover@gmail.com
         <br>
         Discord:Antidodge#2381
       </div>
@@ -57,7 +61,7 @@
   	</div>
   	<div class="col-12 col-lg-6">
     	<button id="authorize_button" style="display: none;" class="btn btn-outline-dark float-right">登入</button>
-    	<button id="signout_button" style="display: none;" class="btn btn-outline-dark float-right">登出</button>
+    	<button id="signout_button" style="display: none;" class="visible-lg btn btn-outline-dark float-right">登出</button>
 	</div>
  </div>
 <br>
@@ -165,7 +169,7 @@
       	var MaterialFieldName = ["種類", "物品等級", "物品名稱","地區-地點","NPC屬性","NPC等級","NPC名稱"];
       	var OreFieldName = ["等級", "屬性", "名稱","地區-礦區名稱","掉落物品"];
       	var NoteFieldName = ["日期","標題","內容"];
-      	var RangeSet = ["Quest!A:F","NPC!A:M","Equip!A:H","Material!A:G","Ore!A:E","Note:A:C"];
+      	var RangeSet = ["Quest!A:F","NPC!A:M","Equip!A:H","Material!A:G","Ore!A:E","Note!A:C"];
       	content.innerHTML = "";
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
