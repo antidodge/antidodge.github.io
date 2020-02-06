@@ -20,9 +20,13 @@
         </button>
       </div>
       <div class="modal-body">
-        本資料庫備份用，資料來源為吞食伊拉克
+        本資料庫備份用，以免掛站，資料來源為吞食伊拉克
         <br>
-        若有疑問請聯繫csielover@gmail.com
+        網站框架為Bootstrap 4
+        <br>
+        所有資料皆儲存於Google Sheets，並使用Google Sheets API v4進行導入
+        <br>
+        若有疑問、或需要資料表內容，請聯繫csielover@gmail.com
         <br>
         Discord:Antidodge#2381
       </div>
@@ -42,9 +46,12 @@
   		<div class="btn-group mr-2" role="group" aria-label="First group">
     		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(0)" id="search_btn#0">任務</button>
     		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(1)" id="search_btn#1">武將</button>
-    		<button type="button" class="btn btn-outline-dark" id="search_btn#2">裝備</button>
-    		<button type="button" class="btn btn-outline-dark" id="search_btn#3">材料</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(2)" id="search_btn#2">裝備</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(3)" id="search_btn#3">材料</button>
+    		<button type="button" class="btn btn-outline-dark" onclick="setSearchType(4)" id="search_btn#4">礦怪</button>
     		<button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#aboutsite">關於</button>
+    		<button type="button" class="btn btn-outline-dark" >日誌</button>
+    		<button type="button" class="btn btn-outline-dark" href="http://shota.ddns.net/">吞食伊拉克</button>
   		</div>
   		</div>
   	</div>
@@ -156,7 +163,10 @@
       function listMajors() {
       	var QuestFieldName = ["任務名稱", "地區", "任務條件","任務流程","獲得物品","備註"];
       	var NPCFieldName = ["等級", "名稱", "網羅","屬性","知力","武力","防禦","體質","能量","敏捷","特技","出沒地","掉落物"];
-      	var RangeSet = ["Quest!A:F","NPC!A:M"]
+      	var EquipFieldName = ["裝備部位", "名稱", "等級","類別","能力","取得位置","購買價","點數"];
+      	var MaterialFieldName = ["種類", "物品等級", "物品名稱","地區-地點","NPC屬性","NPC等級","NPC名稱"];
+      	var OreFieldName = ["等級", "屬性", "名稱","地區-礦區名稱","掉落物品"];
+      	var RangeSet = ["Quest!A:F","NPC!A:M","Equip!A:H","Material!A:G","Ore!A:E"];
       	content.innerHTML = "";
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1PHZcNzKr6JCjXUL2Snk6HRIlltfKZxvj9EFTQ4k3-Mc',
@@ -182,6 +192,9 @@
               			var td2 = document.createElement("td");
               				if(search_op==0)td1.innerHTML =  QuestFieldName[k];
               				if(search_op==1)td1.innerHTML =  NPCFieldName[k];
+              				if(search_op==2)td1.innerHTML =  EquipFieldName[k];
+              				if(search_op==3)td1.innerHTML =  MaterialFieldName[k];
+              				if(search_op==4)td1.innerHTML =  OreFieldName[k];
               				td2.innerHTML = row[k];
               			trr.appendChild(td1);
               			trr.appendChild(td2);
